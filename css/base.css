@@ -1,0 +1,461 @@
+/* 
+
+This is the CSS file for the entire site, there isn't much here, but for documentation sake I'll make sections:
+
+- resets
+- globals
+- index.html
+- work.html
+- about.html
+- workpage.html
+
+*/
+
+/* RESETS  */
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+li {
+	list-style-type: none;
+}
+
+h1, h2, h3, h4 {
+	margin: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin: 0;
+}
+
+hr {
+	margin: 0;
+}
+
+/* GLOBALS */
+
+.header {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 20px #D5D5D5;
+  font-family: "ubuntu";
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.footer {
+	margin: auto;
+	margin-top: 4rem;
+	font-family: "nunito";
+	font-weight: 400;
+	font-size: 1rem;
+}
+
+
+/* INDEX CSS*/
+
+#background1 {
+  /* position: fixed to bottom: 0 needs to be here for this to work */
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -900;
+  background: linear-gradient(257deg, #3AC8FF, #E170D5);
+  background-size: 400% 400%;
+  
+  animation: AnimatedGradient 40s ease infinite;
+}
+
+@keyframes AnimatedGradient {
+  0%{background-position: 0% 50%}
+  50%{background-position: 100% 50%}
+  100%{background-position: 0% 50%}
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.center-box {
+  height: 60%;
+}
+
+.index-outer-margins {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.index-title {
+  /*max-width: 800px;*/
+  margin: auto;
+  max-width: 600px;
+  font-family: "ubuntu";
+  font-weight: bold;
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+}
+
+.content {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.blurb {
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  font-family: "ubuntu";
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+#index_line {
+	height: 3px;
+	border: none;
+	background-color: #31284A80;
+	border-radius: 5px;
+	max-width: 500px;
+	margin: auto;
+	margin-top: 1.5rem;
+}
+
+.link-main {
+  display: block;
+  margin: auto;
+  padding: 0.5rem;
+  max-width: 250px;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #ECCBD6C7;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  font-family: "nunito";
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: black;
+}
+
+#work {
+  border-radius: 0 30px;
+}
+
+#about {
+  border-radius: 30px 0;
+}
+
+.link-main:hover {
+  transform: translate(0px, -5px);
+  background-color: rgba(255,255,255, 0.45);
+  transition: 0.5s;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* WORK */
+
+.list-links {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 0;
+  flex-wrap: wrap;
+  font-family: "nunito";
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.list-link-item {
+  margin: 1rem;
+  margin-top: 0rem;
+}
+
+.gallery-sizer {
+  max-width: 935px;
+  margin: auto;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-outer-margins {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.gallery-container-title {
+  text-align: center;
+  font-family: "ubuntu";
+  font-size: 1.7rem;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.image-grid {
+  --auto-grid-min-size: 14rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  grid-gap: 1rem;
+  margin: auto;
+  margin-bottom: 7rem;
+  justify-items: center;
+  justify-content: center;
+}
+
+.grid-item {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  box-shadow: 3px 0 10px #3AC8FF80, 3px 5px 10px #E170D580;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.image-link:hover {
+  transform: scale(1.2);
+  transition: 0.5s;
+  filter: brightness(60%);
+}
+
+/* MIGHT MOVE TO GLOBALS FOR CONSISTENCY */
+.portfolio-line {
+  background-image: linear-gradient(90deg, #3AC8FF, #E170D5);
+  height: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* UNDER HEAVY DEVELOPMENT */
+
+.grid-item-games {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 100%;
+	height: 100%;
+	flex-flow: column;
+	backdrop-filter: blur(12px);
+}
+
+.games-list {
+	text-align: center;
+	margin-bottom: 2rem;
+	width: 50%;
+	align-self: center;
+	font-family: "nunito";
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.game-name {
+	text-align: center;
+	margin: auto;
+	margin-top: 1.5rem;
+	align-self: flex-start;
+	font-family: "ubuntu";
+	font-weight: bold;
+	font-size: 2.4rem;
+	-webkit-text-stroke: 1px #999;
+	
+}
+
+.games-about {
+	margin-bottom: 1.5rem;
+	padding: 0.1rem;
+	background-color: rgba(255, 255, 255, 0.5);
+	backdrop-filter: blur(10px);
+	border: 2px solid #D5D5D5;
+	border-radius: 10px;
+}
+
+.games-about:hover {
+	transform: translate(0px, -5px);
+	background-color: rgba(255,255,255, 0.45);
+	transition: 0.5s;
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.3);
+}
+
+.games-link {
+	padding: 0.1rem;
+	background-color: rgba(255, 255, 255, 0.5);
+	backdrop-filter: blur(10px);
+	border: 2px solid #D5D5D5;
+	border-radius: 10px;
+}
+
+.games-link:hover {
+	transform: translate(0px, -5px);
+	background-color: rgba(255,255,255, 0.45);
+	transition: 0.5s;
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ABOUT */
+
+.about-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-grid {
+    grid-template-columns: repeat(auto-fit, minmax(max(250px, 34%), 1fr));
+	display: grid;
+	grid-gap: 1rem;
+}
+
+.about-outer-margins {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.about-title {
+  padding: 1rem;
+  text-align: center;
+  font-family: "ubuntu";
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+#about_line {
+	margin: auto;
+	margin-top: 0.4rem;
+	max-width: 300px;
+	height: 3px;
+}
+
+.about-image {
+  margin: auto;
+  margin-top: 0;
+}
+
+/* GAME ABOUT PAGE-SPECIFIC ID */
+
+/* THIS ID IS USED TO ADD MULTIPLE IMAGES IN THE ABOUT IMAGE CONTAINER FOR THE GAME ABOUT PAGES*/
+#game-about-image {
+	display: flex;
+	flex-direction: column;
+}
+
+/* THIS ID IS USED FOR IF THERE IS A PNG OR GIF THAT LOOKS BETTER WITHOUT A BOX SHADOW */
+#game-about-image-noshadow {
+	box-shadow: none;
+}
+
+/* THIS ID IS FOR A STUPID EDGE CASE IF A PIXEL GIF NEEDS TO BE SCALED DOWN >_< */
+
+#game-about-gif-nobg {
+	box-shadow: none;
+	object-fit: scale-down;
+}
+
+/* END */
+
+.about-image img {
+	box-shadow: 3px 0 10px #3AC8FF80, 3px 5px 10px #E170D580;
+	margin-bottom: 1rem;
+}
+
+.about-container img {
+  width: 100%;
+  max-height: 400px;
+}
+
+.about-text {
+	text-align: left;
+	line-height: 1.2;
+	font-family: "nunito";
+	font-weight: 500;
+	font-size: 1.1rem;
+}
+
+.about-text p {
+	margin-bottom: 2rem;
+}
+
+.about-text a {
+	color: blue;
+}
+
+.about-text a:visited {
+	color: blue;
+}
+
+
+/* WORKPAGE */
+
+.workpage-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  justify-content: center;
+  max-width: 750px;
+  margin: auto;
+}
+
+.workpage-outer-margins {
+	margin: 0;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.workpage-image-content {
+  /*aspect-ratio: 1;*/
+  max-width: 750px;
+}
+
+.workpage-image {
+  width: 100%;
+  max-height: 500px;
+  box-shadow: 3px 0 10px #3AC8FF80, 3px 5px 10px #E170D580;
+}
+
+.workpage-image-caption {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+.caption-words {
+	margin-top: 1rem;
+	font-family: "nunito";
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+#workpage_line {
+	max-width: 400px;
+	margin: auto;
+	margin-top: 0.8rem;
+}
