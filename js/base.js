@@ -5,6 +5,9 @@
 // https://www.youtube.com/watch?v=_h6iT2UnyVs&t=407s
 
 // query selectors
+
+const allBodyElements = document.querySelectorAll('body *');
+
 const imageLink = document.querySelectorAll('.image-link');
 const imageArray = Array.from(imageLink);
 const lastImage = imageArray.length - 1;
@@ -42,6 +45,28 @@ const setActiveImage = (image) => {
   }
 }
 
+// function to add a tabindex of -1 to all elements except the lightbox class
+// and what is inside it
+const addTabIndex = () => {
+  allBodyElements.forEach(element => {
+    if (!lightbox.contains(element)) {
+      element.setAttribute('tabindex', -1);
+    }
+  })
+}
+
+// function to restore tabindex to 0 for all elements upon lightbox closing
+const removeTabIndex = () => {
+  allBodyElements.forEach(element => {
+    if (lightbox.contains(element)){
+      element.setAttribute('tabindex', -1);
+    }
+    else {
+      element.setAttribute('tabindex', '');
+    }
+  })
+}
+
 const removeBtnInactiveClass = () => {
   lightboxBtns.forEach(btn => {
     btn.classList.remove('inactive');
@@ -72,10 +97,14 @@ imageLink.forEach(image => {
     e.currentTarget.removeAttribute('href');
     showLightBox()
     setActiveImage(image)
+    addTabIndex()
     })
   })
 
-  lightbox.addEventListener('click', () => {hideLightBox()})
+  lightbox.addEventListener('click', () => {
+    removeTabIndex()
+    hideLightBox()
+  })
 
   lightboxBtns.forEach(btn => {
     btn.addEventListener('click', (e) =>{
@@ -91,6 +120,7 @@ imageLink.forEach(image => {
     if (!lightbox.classList.contains('active')) return;
     if (e.key.includes('Escape')) {
       e.preventDefault();
+      removeTabIndex();
       hideLightBox();
     }
     if (e.key.includes('Left') || e.key.includes('Right')) {
