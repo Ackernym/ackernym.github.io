@@ -346,6 +346,33 @@ hr {
 	object-fit: cover;
 }
 
+.lightbox-btn {
+	background-color: green;
+	display: grid;
+	place-items: center;
+	padding: 0.8rem;
+	color: red;
+	position: absolute;
+}
+
+.lightbox-btn:focus {
+	outline: none;
+}
+
+.lightbox-btn.inactive {
+	display: none;
+}
+
+.left {
+	left: 5px;
+}
+
+.right {
+	right: 5px;
+}
+
+
+
 /* ABOUT */
 
 .about-container {
