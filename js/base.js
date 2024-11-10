@@ -1,5 +1,6 @@
-//TODO make it so that if you click the arrow key on the keyboard on the last or first images it won't loop
-//since we made it so that if you're clicking on it it'll hide the arrow key
+//TODO make it so that the body doesn't scroll when the modal is open
+//TODO make it so that the only things that can be tabbed when the modal is open are the arrow/exit buttons
+//TODO make exit button
 // this lightbox was made pretty much by exactly following a tutorial from this youtube video
 // https://www.youtube.com/watch?v=_h6iT2UnyVs&t=407s
 
@@ -47,14 +48,18 @@ const removeBtnInactiveClass = () => {
   })
 }
 
+//if you want to loop around with arrow keys even if the button is inactive, set
+//the first case to  setActiveImage(imageArray[lastImage])
 const transitionSlidesLeft = () => {
   lightboxBtnLeft.focus();
-  activeImage === 0 ? setActiveImage(imageArray[lastImage]) : setActiveImage(imageArray[activeImage - 1]);
+  activeImage === 0 ? setActiveImage(imageArray[0]) : setActiveImage(imageArray[activeImage - 1]);
 }
 
+//if you want to loop around with the arrow keys even if the button is inactice, set
+//the first case to setActiveImage(imageArray[0])
 const transitionSlidesRight = () => {
   lightboxBtnRight.focus();
-  activeImage === lastImage ? setActiveImage(imageArray[0]) : setActiveImage(imageArray[activeImage + 1]);
+  activeImage === lastImage ? setActiveImage(imageArray[lastImage]) : setActiveImage(imageArray[activeImage + 1]);
 }
 
 const transitionSlideHandler = (moveItem) => {
