@@ -19,6 +19,8 @@ const lightboxBtns = document.querySelectorAll('.lightbox-btn');
 const lightboxBtnRight = document.querySelector('#right');
 const lightboxBtnLeft = document.querySelector('#left');
 
+const lightboxExitBtn = document.querySelector('.lightbox-exit-btn');
+
 let activeImage;
 
 
@@ -123,6 +125,13 @@ imageLink.forEach(image => {
       e.stopPropagation();
      transitionSlideHandler(e.currentTarget.id);
 ;    })
+  })
+
+// event listener for exit button to function
+  lightboxExitBtn.addEventListener('click', () => {
+    removeTabIndex()
+    hideLightBox()
+    enableBodyScroll()
   })
 
 

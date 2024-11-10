@@ -83,16 +83,8 @@ hr {
   bottom: 0;
   z-index: -900;
   background: linear-gradient(257deg, #3AC8FF, #E170D5);
-  background-size: 400% 400%;
-  
-  animation: AnimatedGradient 40s ease infinite;
 }
 
-@keyframes AnimatedGradient {
-  0%{background-position: 0% 50%}
-  50%{background-position: 100% 50%}
-  100%{background-position: 0% 50%}
-}
 
 .container {
   display: flex;
@@ -165,11 +157,11 @@ hr {
 }
 
 #work {
-  border-radius: 0 30px;
+  border-radius: 30px 30px 0 0;
 }
 
 #about {
-  border-radius: 30px 0;
+  border-radius: 0 0 30px 30px;
 }
 
 .link-main:hover {
@@ -353,6 +345,15 @@ body.lightbox-open {
 	max-width: 90%;
 	max-height: 90%;
 	object-fit: cover;
+}
+
+.lightbox-exit-btn {
+	background-color: red;
+	display: grid;
+	place-items: center;
+	padding: 0.8rem;
+	position: absolute;
+	top: 5px;
 }
 
 .lightbox-btn {
