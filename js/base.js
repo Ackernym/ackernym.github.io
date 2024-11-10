@@ -81,9 +81,13 @@ imageLink.forEach(image => {
 
 
 
-
+// event listener for window events
   window.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('active')) return;
+    if (e.key.includes('Escape')) {
+      e.preventDefault();
+      hideLightBox();
+    }
     if (e.key.includes('Left') || e.key.includes('Right')) {
       e.preventDefault();
       transitionSlideHandler(e.key.toLowerCase());
