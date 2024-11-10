@@ -1,5 +1,4 @@
-//TODO make it so that the body doesn't scroll when the modal is open
-//TODO make it so that the only things that can be tabbed when the modal is open are the arrow/exit buttons
+//TODO adjust paramaters on tab indexing so that the lightbox image itself isn't tabbable 
 //TODO make exit button
 // this lightbox was made pretty much by exactly following a tutorial from this youtube video
 // https://www.youtube.com/watch?v=_h6iT2UnyVs&t=407s
@@ -7,6 +6,8 @@
 // query selectors
 
 const allBodyElements = document.querySelectorAll('body *');
+
+const bodyTag = document.querySelector('body');
 
 const imageLink = document.querySelectorAll('.image-link');
 const imageArray = Array.from(imageLink);
@@ -26,6 +27,12 @@ let activeImage;
 const showLightBox = () => {lightbox.classList.add('active')}
 
 const hideLightBox = () => {lightbox.classList.remove('active')}
+
+// disables scrolling on the body when the lightbox is active
+const disableBodyScroll = () => {bodyTag.classList.add('lightbox-open')}
+
+// reenables scrolling on the body when the lightbox closes
+const enableBodyScroll = () => {bodyTag.classList.remove('lightbox-open')}
 
 const setActiveImage = (image) => {
   lightboxImage.src = image.dataset.imgfull;
@@ -51,6 +58,9 @@ const addTabIndex = () => {
   allBodyElements.forEach(element => {
     if (!lightbox.contains(element)) {
       element.setAttribute('tabindex', -1);
+    }
+    else{
+      element.setAttribute('tabindex', 0);
     }
   })
 }
@@ -98,12 +108,14 @@ imageLink.forEach(image => {
     showLightBox()
     setActiveImage(image)
     addTabIndex()
+    disableBodyScroll()
     })
   })
 
   lightbox.addEventListener('click', () => {
     removeTabIndex()
     hideLightBox()
+    enableBodyScroll()
   })
 
   lightboxBtns.forEach(btn => {
@@ -122,6 +134,7 @@ imageLink.forEach(image => {
       e.preventDefault();
       removeTabIndex();
       hideLightBox();
+      enableBodyScroll();
     }
     if (e.key.includes('Left') || e.key.includes('Right')) {
       e.preventDefault();

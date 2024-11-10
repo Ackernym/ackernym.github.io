@@ -182,6 +182,12 @@ hr {
 
 /* WORK */
 
+
+/* added to body when lightbox is open to prevent scrolling */
+body.lightbox-open {
+	overflow: hidden;
+}
+
 .list-links {
   display: flex;
   align-content: center;
